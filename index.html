@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <title>Message Bot</title>
+</head>
+<body>
+    <h1>Message Bot</h1>
+    <p>An automated email and text message sender.</p>
+    <form class="pure-form pure-form-stacked" action="mail.php">
+        <legend id="messageType">Message Type</legend>
+        <label id="option1Label" for="option1" class="pure-radio">
+            <input id="option1" type="radio" name="optionsRadios" value="email"> Email
+        </label>
+        <label id="option2Label" for="option2" class="pure-radio">
+            <input id="option2" type="radio" name="optionsRadios" value="text"> Text Message
+        </label>
+        <fieldset>
+            <!-- EMAIL -->
+            <div id="emailContainer">
+                <legend id="emailOptions">Email Options</legend>
+                
+                <label for="email">Email Address</label>
+                <input id="email" class="pure-input-1-4" type="email" placeholder="Email Address">
+
+                <label for="subject">Subject</label>
+                <input id="subject" class="pure-input-1-4" type="text" placeholder="Subject">
+
+                <label for="body">Email Body</label>
+                <textarea id="subject" class="pure-input-1-4" type="text" placeholder="Email Body"></textarea>
+            </div>
+
+            <!-- TEXT MESSAGE -->
+            <div id="textContainer">
+                <legend id="emailOptions">Text Message Options</legend>
+            
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" class="pure-input-1-4" type="tel" placeholder="Phone Number">
+
+                <label for="carrier">Cell Carrier</label>
+                <select id="carrier">
+                    <option value="verizon">Verizon</option>
+                    <option value="sprint">Sprint</option>
+                </select>
+               
+                <label for="subject">Text Message Body</label>
+                <textarea id="subject" class="pure-input-1-4" type="text" placeholder="Text Message Body"></textarea>
+            </div>
+            
+            <div id="settingsContainer">
+                <legend id="messageSettings">Message Settings</legend>
+                    <label for="amount">Amount of Messages (1-5):</label>
+                    <div class="pure-u-1-4">
+                        <input id="amount" class="pure-input-1-4" type="number" min="1" max="5">
+                    </div>
+            </div>
+            
+            <div id="submitContainer">
+                <button type="submit" class="pure-button pure-button-primary">Send Messages</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
