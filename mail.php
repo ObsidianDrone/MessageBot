@@ -2,6 +2,8 @@
 
 echo "test";
 
+var_dump($_POST);
+
 /*date_default_timezone_set('Etc/UTC');
 
 require '../PHPMailerAutoload.php';
