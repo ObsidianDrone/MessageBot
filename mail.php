@@ -22,6 +22,7 @@ $mail->setFrom('messagebot123@gmail.com', 'Message Bot');
 $mail->addReplyTo('messagebot123@gmail.com', 'Message Bot');
 
 $url = null;
+$mail->Body = 'error';
 
 if($_POST['type']==='text'){
     
@@ -30,13 +31,13 @@ if($_POST['type']==='text'){
     }
     
     $mail->Subject = null;
-    $mail->AltBody = $_POST['tBody'];
+    $mail->Body = $_POST['tBody'];
     
 } elseif ($_POST['type']==='email'){
     
     $url = $_POST['email'];
     $mail->Subject = $_POST['subject'];
-    $mail->AltBody = $_POST['eBody'];
+    $mail->Body = $_POST['eBody'];
     
 }
 
