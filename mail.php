@@ -42,7 +42,7 @@ if($_POST['type']==='text'){
 
 $mail->addAddress($url);
 
-for (i=1; i<=$_POST['amount']; i++) {
+for ($i=1; $i<=$_POST['amount']; $i++) {
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
