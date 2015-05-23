@@ -55,10 +55,10 @@ $(document).ready(function(){
             tBody: tBody,
             amount: amount
         });
-        */
         
         $(this).prop("disabled",true);
         $(this).attr("disabled","disabled");
+        */
         
     });
     
