@@ -5,15 +5,15 @@ $(document).ready(function(){
     
     $("input[type='radio']").change(function(){
         if($("input[type='radio']:checked").val()=="email"){
-            $("fieldset").show();
+            $("#fieldset").show();
             $("#textContainer").hide();
             $("#emailContainer").show();
         } else if($("input[type='radio']:checked").val()=="text"){
-            $("fieldset").show();
+            $("#fieldset").show();
             $("#textContainer").show();
             $("#emailContainer").hide();
         } else {
-            $("fieldset").hide();
+            $("#fieldset").hide();
             $("#textContainer").hide();
             $("#emailContainer").hide();
         }
