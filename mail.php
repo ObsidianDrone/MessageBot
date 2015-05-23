@@ -1,6 +1,6 @@
 <?php
 
-require '../PHPMailerAutoload.php';
+require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 
 date_default_timezone_set('Etc/UTC');
 
