@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("fieldset").hide();
+    $("#fieldset").hide();
     
     var type, address, number, subject, carrier, eBody, tBody, amount;
     
