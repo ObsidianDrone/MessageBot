@@ -31,9 +31,18 @@ $(document).ready(function(){
         number = $("#phoneNumber").val();
         subject = $("#subject").val();
         carrier = $("#carrier").val();
-        eBody = $("#body").val();
-        tBody = $("#message").val();
+        eBody = $("#eBody").val();
+        tBody = $("#tBody").val();
         amount = $("#amount").val();
+        
+        console.log(type);
+        console.log(address);
+        console.log(number);
+        console.log(subject);
+        console.log(carrier);
+        console.log(eBody);
+        console.log(tBody);
+        console.log(amount);
         
         $.post("mail.php",{
             type: type,
