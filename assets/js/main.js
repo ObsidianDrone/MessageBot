@@ -44,6 +44,7 @@ $(document).ready(function(){
         console.log(tBody);
         console.log(amount);
         
+        /*
         $.post("mail.php",{
             type: type,
             address: address,
@@ -54,6 +55,7 @@ $(document).ready(function(){
             tBody: tBody,
             amount: amount
         });
+        */
         
     });
     
