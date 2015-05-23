@@ -26,6 +26,8 @@ $(document).ready(function(){
     $("button[type='submit']").click(function(event){
         //event.preventDefault();
         
+        $(this).button('loading');
+        
         type = $("input[type='radio']:checked").val();
         address = $("#email").val();
         number = $("#phoneNumber").val();
