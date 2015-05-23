@@ -24,7 +24,7 @@ $(document).ready(function(){
     })*/
     
     $("button[type='submit']").click(function(event){
-        event.preventDefault();
+        //event.preventDefault();
         
         type = $("input[type='radio']:checked").val();
         address = $("#email").val();
@@ -44,7 +44,7 @@ $(document).ready(function(){
         console.log(tBody);
         console.log(amount);
         
-        /*
+        
         $.post("mail.php",{
             type: type,
             address: address,
@@ -55,7 +55,7 @@ $(document).ready(function(){
             tBody: tBody,
             amount: amount
         });
-        */
+        
         
     });
     
