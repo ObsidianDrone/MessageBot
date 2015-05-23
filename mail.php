@@ -53,8 +53,8 @@ if ($_POST['amount']>3) {
     $amount = $_POST['amount'];
 }
 
-echo '<a href="/MessageBot">Go Back</a><br/>'
-echo 'DEBUG:<br/>';
+echo "<a href='/MessageBot'>Go Back</a><br/>";
+echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
     if (!$mail->send()) {
