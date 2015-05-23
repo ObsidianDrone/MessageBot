@@ -1,12 +1,8 @@
 <?php
 
-echo "test";
-
-var_dump($_POST);
-
-/*date_default_timezone_set('Etc/UTC');
-
 require '../PHPMailerAutoload.php';
+
+date_default_timezone_set('Etc/UTC');
 
 $mail = new PHPMailer;
 
@@ -19,28 +15,37 @@ $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 
 $mail->SMTPAuth = true;
-$mail->Username = "username@gmail.com";
-$mail->Password = "yourpassword";
+$mail->Username = "messagebot123@gmail.com";
+$mail->Password = "mess1age2bot3";
 
-$mail->setFrom('from@example.com', 'First Last');
-$mail->addReplyTo('replyto@example.com', 'First Last');
+$mail->setFrom('messagebot123@gmail.com', 'Message Bot');
+$mail->addReplyTo('messagebot123@gmail.com', 'Message Bot');
 
-$mail->addAddress('whoto@example.com', 'John Doe');
+$url = null;
 
-$mail->Subject = 'PHPMailer GMail SMTP test';
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+if($_POST['type']==='text'){
+    
+    if($_POST['carrier']==='verizon'){
+        $url = $_POST['phoneNumber'].'@vtext.com';
+    }
+    
+    $mail->Subject = null;
+    $mail->AltBody = $_POST['tBody'];
+    
+} elseif ($_POST['type']==='email'){
+    
+    $url = $_POST['email'];
+    $mail->Subject = $_POST['subject'];
+    $mail->AltBody = $_POST['eBody'];
+    
+}
 
-//Replace the plain text body with one created manually
-$mail->AltBody = 'This is a plain-text message body';
+$mail->addAddress($url);
 
-//Attach an image file
-$mail->addAttachment('images/phpmailer_mini.png');
-
-//send the message, check for errors
-if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-    echo "Message sent!";
-}/*
+for (i=1; i<=$_POST['amount']; i++) {
+    if (!$mail->send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        echo "Message sent!";
+    }
+}
