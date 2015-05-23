@@ -45,10 +45,21 @@ if($_POST['type']==='text'){
 
 $mail->addAddress($url);
 
-for ($i=1; $i<=$_POST['amount']; $i++) {
+$amount = 1;
+
+if ($_POST['amount']>3) {
+    $amount=3;
+} else {
+    $amount = $_POST['amount'];
+}
+
+echo '<a href="/MessageBot">Go Back</a><br/>'
+echo 'DEBUG:<br/>';
+
+for ($i=1; $i<=$amount; $i++) {
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
-        echo "Message sent!";
+        echo "Message sent! <br/>";
     }
 }
