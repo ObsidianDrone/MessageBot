@@ -7,7 +7,7 @@ date_default_timezone_set('Etc/UTC');
 $mail = new PHPMailer;
 
 $mail->isSMTP();
-$mail->SMTPDebug = 2;
+$mail->SMTPDebug = 0;
 $mail->Debugoutput = 'html';
 
 $mail->Host = 'smtp.gmail.com';
@@ -28,6 +28,8 @@ if($_POST['type']==='text'){
     
     if($_POST['carrier']==='verizon'){
         $url = $_POST['phoneNumber'].'@vtext.com';
+    } elseif($_POST['carrier']==='sprint'){
+        $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
     $mail->Subject = null;
