@@ -4,7 +4,6 @@ require 'assets/libs/sendgrid-php/sendgrid-php.php';
 
 date_default_timezone_set('Etc/UTC');
 
-
 $start = microtime(true);
 $sendgrid = new SendGrid('MessageBot', 'MessageBot123');
 $mail = new SendGrid\Email();
@@ -22,7 +21,7 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    $mail->setSubject('MessageBot');
+    //$mail->setSubject('MessageBot');
     $mail->setText($_POST['tBody']);
     
 } elseif ($_POST['type']==='email'){
@@ -43,7 +42,7 @@ if ($_POST['amount']>3) {
     $amount = $_POST['amount'];
 }
 
-echo "<a href='/MessageBot'>Go Back</a><br/><hr/><br/>";
+echo '<a href="/MessageBot">Go Back</a><br/><p id="messageStatus">Message Status: Success!</p><br/><hr/><br/>';
 echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
@@ -54,7 +53,9 @@ for ($i=1; $i<=$amount; $i++) {
         foreach($e->getErrors() as $er) {
             echo $er;
         }
+        echo '<script>document.getElementById("messageStatus").innerHTML="Message Status: Failed!"</script>';
     }
 }
 
-echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
+echo "<br/>"
+echo "Time taken to process request: ".round(microtime(true) - $start, 3)."sec<br>";
