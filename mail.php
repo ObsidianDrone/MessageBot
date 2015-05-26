@@ -1,6 +1,6 @@
 <?php
 
-require 'assets/libs/snedgrid-php/sendgrid-php.php';
+require 'assets/libs/sendgrid-php/sendgrid-php.php';
 
 date_default_timezone_set('Etc/UTC');
 
