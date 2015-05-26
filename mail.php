@@ -12,7 +12,7 @@ $mail = new SendGrid\Email();
 $mail->setFrom('messagebot123@gmail.com');
 
 $url = null;
-$mail->setText = 'error';
+$mail->setText('error');
 
 if($_POST['type']==='text'){
     
@@ -22,14 +22,14 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    $mail->setSubject = "MessageBot";
-    $mail->setText = $_POST['tBody'];
+    $mail->setSubject('MessageBot');
+    $mail->setText($_POST['tBody']);
     
 } elseif ($_POST['type']==='email'){
     
     $url = $_POST['email'];
-    $mail->setSubject = $_POST['subject'];
-    $mail->setText = $_POST['eBody'];
+    $mail->setSubject($_POST['subject']);
+    $mail->setText($_POST['eBody']);
     
 }
 
