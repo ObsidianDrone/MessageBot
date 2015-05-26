@@ -5,7 +5,7 @@ require 'assets/libs/sendgrid-php/sendgrid-php.php';
 date_default_timezone_set('Etc/UTC');
 
 
-//$start = microtime(true);
+$start = microtime(true);
 $sendgrid = new SendGrid('MessageBot', 'MessageBot123');
 $mail = new SendGrid\Email();
 
@@ -22,7 +22,7 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    $mail->setSubject('MessageBot');
+    $mail->setSubject('');
     $mail->setText($_POST['tBody']);
     
 } elseif ($_POST['type']==='email'){
@@ -56,3 +56,5 @@ for ($i=1; $i<=$amount; $i++) {
         }
     }
 }
+
+echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
