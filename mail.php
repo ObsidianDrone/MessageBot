@@ -4,6 +4,7 @@ require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 
 date_default_timezone_set('Etc/UTC');
 
+$start = microtime(true);
 $mail = new PHPMailer;
 
 $mail->isSMTP();
@@ -57,9 +58,14 @@ echo "<a href='/MessageBot'>Go Back</a><br/><hr/><br/>";
 echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
+    
+    echo "Line ".__LINE__.":"round(microtime(true) - $start, 3)."sec<br>";
+    
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
         echo "Message sent! <br/>";
     }
+    
+    echo "Line ".__LINE__.":"round(microtime(true) - $start, 3)."sec<br>";
 }
