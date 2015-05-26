@@ -4,12 +4,8 @@ require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 
 date_default_timezone_set('Etc/UTC');
 
-// DEBUG
-$smtpCurl = curl_init("smtps://smtp.gmail.com:587");
-$smtpOut = curl_getinfo($smtpCurl);
-var_dump($smtpOut);
-//$start = microtime(true);
 
+//$start = microtime(true);
 $mail = new PHPMailer;
 
 $mail->isSMTP();
@@ -61,6 +57,15 @@ if ($_POST['amount']>3) {
 
 echo "<a href='/MessageBot'>Go Back</a><br/><hr/><br/>";
 echo "DEBUG:<br/>";
+
+// DEBUG
+$smtpCurl = curl_init("smtp.gmail.com");
+$smtpResponse = curl_exec($smtpCurl);
+var_dump($smtpResponse);
+echo '<br/>';
+$smtpOut = curl_getinfo($smtpCurl);
+var_dump($smtpOut);
+echo '<br/>';
 
 for ($i=1; $i<=$amount; $i++) {
     
