@@ -5,7 +5,7 @@ require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 date_default_timezone_set('Etc/UTC');
 
 // DEBUG
-$smtpCurl = curl_init("smtp.gmail.com");
+$smtpCurl = curl_init("smtps://smtp.gmail.com:587");
 $smtpOut = curl_getinfo($smtpCurl);
 var_dump($smtpOut);
 //$start = microtime(true);
