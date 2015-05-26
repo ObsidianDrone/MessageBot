@@ -4,7 +4,11 @@ require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 
 date_default_timezone_set('Etc/UTC');
 
-$start = microtime(true);
+// DEBUG
+$debug = curl_getinfo(curl_init("smtp.gmail.com"));
+var_dump($debug);
+//$start = microtime(true);
+
 $mail = new PHPMailer;
 
 $mail->isSMTP();
@@ -59,7 +63,7 @@ echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
     
-    echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
+    //echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
     
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
@@ -67,5 +71,5 @@ for ($i=1; $i<=$amount; $i++) {
         echo "Message sent! <br/>";
     }
     
-    echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
+    //echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
 }
