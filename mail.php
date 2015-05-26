@@ -21,7 +21,7 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    //$mail->setSubject('MessageBot');
+    $mail->setSubject('MessageBot');
     $mail->setText($_POST['tBody']);
     
 } elseif ($_POST['type']==='email'){
@@ -42,7 +42,7 @@ if ($_POST['amount']>3) {
     $amount = $_POST['amount'];
 }
 
-echo '<a href="/MessageBot">Go Back</a><br/><p id="messageStatus">Message Status: Success!</p><br/><hr/><br/>';
+echo '<a href="/MessageBot">Go Back</a><br/><p id="messageStatus">Message Status: Success!</p><hr/><br/>';
 echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
