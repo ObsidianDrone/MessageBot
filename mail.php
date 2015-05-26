@@ -59,7 +59,7 @@ echo "DEBUG:<br/>";
 
 for ($i=1; $i<=$amount; $i++) {
     
-    echo "Line ".__LINE__.":"round(microtime(true) - $start, 3)."sec<br>";
+    echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
     
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
@@ -67,5 +67,5 @@ for ($i=1; $i<=$amount; $i++) {
         echo "Message sent! <br/>";
     }
     
-    echo "Line ".__LINE__.":"round(microtime(true) - $start, 3)."sec<br>";
+    echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
 }
