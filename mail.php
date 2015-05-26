@@ -57,5 +57,5 @@ for ($i=1; $i<=$amount; $i++) {
     }
 }
 
-echo "<br/>"
+echo "<br/>";
 echo "Time taken to process request: ".round(microtime(true) - $start, 3)."sec<br>";
