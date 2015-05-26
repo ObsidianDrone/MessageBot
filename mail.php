@@ -1,30 +1,18 @@
 <?php
 
-require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
+require 'assets/libs/snedgrid-php/sendgrid-php.php';
 
 date_default_timezone_set('Etc/UTC');
 
 
 //$start = microtime(true);
-$mail = new PHPMailer;
+$sendgrid = new SendGrid('MessageBot', 'MessageBot123');
+$mail = new SendGrid\Email();
 
-$mail->isSMTP();
-$mail->SMTPDebug = 2;
-$mail->Debugoutput = 'html';
-
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;
-$mail->SMTPSecure = 'tls';
-
-$mail->SMTPAuth = true;
-$mail->Username = "messagebot123@gmail.com";
-$mail->Password = "mess1age2bot3";
-
-$mail->setFrom('messagebot123@gmail.com', 'Message Bot');
-$mail->addReplyTo('messagebot123@gmail.com', 'Message Bot');
+$mail->setFrom('messagebot123@gmail.com');
 
 $url = null;
-$mail->Body = 'error';
+$mail->setText = 'error';
 
 if($_POST['type']==='text'){
     
@@ -34,18 +22,18 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    $mail->Subject = null;
-    $mail->Body = $_POST['tBody'];
+    $mail->setSubject = null;
+    $mail->setText = $_POST['tBody'];
     
 } elseif ($_POST['type']==='email'){
     
     $url = $_POST['email'];
-    $mail->Subject = $_POST['subject'];
-    $mail->Body = $_POST['eBody'];
+    $mail->setSubject = $_POST['subject'];
+    $mail->setText = $_POST['eBody'];
     
 }
 
-$mail->addAddress($url);
+$mail->addTo($url);
 
 $amount = 1;
 
@@ -58,24 +46,13 @@ if ($_POST['amount']>3) {
 echo "<a href='/MessageBot'>Go Back</a><br/><hr/><br/>";
 echo "DEBUG:<br/>";
 
-// DEBUG
-$smtpCurl = curl_init("smtp.gmail.com");
-$smtpResponse = curl_exec($smtpCurl);
-var_dump($smtpResponse);
-echo '<br/>';
-$smtpOut = curl_getinfo($smtpCurl);
-var_dump($smtpOut);
-echo '<br/>';
-
 for ($i=1; $i<=$amount; $i++) {
-    
-    //echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
-    
-    if (!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-    } else {
-        echo "Message sent! <br/>";
+    try {
+        $sendgrid->send($mail);
+    } catch(\SendGrid\Exception $e) {
+        echo $e->getCode();
+        foreach($e->getErrors() as $er) {
+            echo $er;
+        }
     }
-    
-    //echo "Line ".__LINE__.":".round(microtime(true) - $start, 3)."sec<br>";
 }
