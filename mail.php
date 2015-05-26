@@ -22,7 +22,7 @@ if($_POST['type']==='text'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
     
-    $mail->setSubject('');
+    $mail->setSubject('MessageBot');
     $mail->setText($_POST['tBody']);
     
 } elseif ($_POST['type']==='email'){
