@@ -5,8 +5,9 @@ require 'assets/libs/PHPMailer/PHPMailerAutoload.php';
 date_default_timezone_set('Etc/UTC');
 
 // DEBUG
-$debug = curl_getinfo(curl_init("smtp.gmail.com"));
-var_dump($debug);
+$smtpCurl = curl_init("smtp.gmail.com");
+$smtpOut = curl_getinfo($smtpCurl);
+var_dump($smtpOut);
 //$start = microtime(true);
 
 $mail = new PHPMailer;
