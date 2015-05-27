@@ -20,6 +20,9 @@ if($_POST['type']==='text'){
     } elseif($_POST['carrier']==='sprint'){
         $url = $_POST['phoneNumber'].'@messaging.sprintpcs.com';
     }
+    elseif($_POST['carrier']==='T-Mobil'){
+        $url = $_POST['phoneNumber'].'number@tmomail.net'
+    }    
     
     $mail->setSubject('MessageBot');
     $mail->setText($_POST['tBody']);
